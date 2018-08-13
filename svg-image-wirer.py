@@ -10,8 +10,10 @@ path_strings = [path.getAttribute('d') for path
                 in doc.getElementsByTagName('path')]
 doc.unlink()
 
+pattern = ('(?=.{1,})([a-zA-Z]|-?[\d]{,3}\.?[\d]{,3})')
+
 for path in path_strings:
-	vertices = path.split(' ')
-	for vertex in vertices:
-		print(vertex)
+	vertices = re.split(pattern, path)
+	for i in range(len(vertices)):
+		print(vertices[i])
 	
